@@ -1,24 +1,17 @@
-'use client';
-
-import { authClient } from '@/lib/auth.client';
+import { auth } from '@/lib/auth';
+import { headers } from 'next/headers';
 import { redirect } from 'next/navigation';
 
-export default function AuthLayout({
+export default async function AuthLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const { data: session, isPending } = authClient.useSession();
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
 
-  console.log('session', session);
-
-  if (!session && isPending) {
-    return <div>Loading...</div>;
-  }
-
-  if (session && !isPending) {
-    redirect('/dashboard');
-  }
+  if (session) redirect('/dashboard');
 
   return <>{children}</>;
 }
