@@ -20,7 +20,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "dotenv": "^16.4.7",
-    "drizzle-orm": "^0.41.0",
+    "drizzle-orm": "^0.45.0",
     "lucide-react": "^0.485.0",
     "next": "15.2.4",
     "next-intl": "^4.0.2",
